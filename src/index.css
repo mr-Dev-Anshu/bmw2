@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.center {
+  @apply flex justify-center items-center flex-col font-semibold;
+}
+
+.menu-button {
+  @apply focus:bg-slate-500/60 p-3 rounded-lg w-[60px] h-[60px];
+}
+  /* Register  */
+.input{
+  @apply border-b w-full border-slate-700 p-4 text-xl focus:outline-none mt-4 focus:border-blue-600 
+}
+
+.btn{
+  @apply  text-white bg-slate-700 sm:py-2 sm:text-2xl text-xl  sm:px-4 rounded-md 
+}
+
+/* Slider */
+ 
+.slide {
+  @apply h-[200px] outline rounded-xl;
+}
+
+.buttons{
+    @apply h-12 flex flex-col justify-center items-center
+}
+
+
+.animate{
+    animation: scrollUp 35s ease-in-out infinite;
+}
+
+@keyframes scrollUp {
+    0%{
+        margin-top: 0%;
+    }
+    50%{
+        margin-top: -40%;
+    }
+    100%{
+        margin-top: -100%;
+    }
+}
