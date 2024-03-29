@@ -4,8 +4,7 @@ const ConfirmBuy = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    alert("Your transaction will be updated in about 2-3 hrs");
-    navigate("/profile");
+    navigate("/message");
   };
 
   return (
