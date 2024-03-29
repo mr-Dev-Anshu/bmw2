@@ -65,7 +65,7 @@ const SlideButton = () => {
         >
           <Card
             title="BMW Cars"
-            price="475"
+            price="800"
             dincome="203"
             tincome="8550"
             cycle="42 days"
@@ -73,7 +73,7 @@ const SlideButton = () => {
           />
           <Card
             title="BMW Cars"
-            price="1770"
+            price="1500"
             dincome="906"
             tincome="37170"
             cycle="41 days"
@@ -81,7 +81,7 @@ const SlideButton = () => {
           />
           <Card
             title="BMW Cars"
-            price="4850"
+            price="2500"
             dincome="2788"
             tincome="111550"
             cycle="40 days"
@@ -89,7 +89,7 @@ const SlideButton = () => {
           />
           <Card
             title="BMW Cars"
-            price="15000"
+            price="5500"
             dincome="10384"
             tincome="405000"
             cycle="39 days"
@@ -97,7 +97,7 @@ const SlideButton = () => {
           />
           <Card
             title="BMW Cars"
-            price="30000"
+            price="9000"
             dincome="22105"
             tincome="840000"
             cycle="38 days"
@@ -105,7 +105,7 @@ const SlideButton = () => {
           />
           <Card
             title="BMW Cars"
-            price="60000"
+            price="21000"
             dincome="50270"
             tincome="1860000"
             cycle="37 days"
