@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContextProvider";
 import MenuBar from "../components/common/MenuBar";
 
+
 export default function Login() {
   const navigate = useNavigate();
   const [phone, setPhone] = useState("");
@@ -10,6 +11,7 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const { loginWithPhone } = useContext(AuthContext);
   const [loading , setLoading ] = useState (false ) ;
+  // const dbRef = doc(db , "Amount" , )
   //  const  {user} = useContext(AuthContext) ; 
   const handleLogin = async (e) => {
     setLoading(true) 
