@@ -4,6 +4,7 @@ import { auth } from "../firebase.config";
 export const userContext = createContext();
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState();
+
   onAuthStateChanged(auth, (curruser) => {
     if (curruser?.emailVerified) {
       setUser(curruser);
@@ -11,6 +12,15 @@ export const UserContextProvider = ({ children }) => {
   });
 
   return (
-    <userContext.Provider value={{ user }}> {children}</userContext.Provider>
+    <userContext.Provider value={{ user }}>
+      {" "}
+      {user ? (
+        <div className="flex justify-center h-screen items-center ">
+          Loading
+        </div>
+      ) : (
+        children
+      )}
+    </userContext.Provider>
   );
 };

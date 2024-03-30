@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContextProvider";
 import MenuBar from "../components/common/MenuBar";
+
 export default function Login() {
   const navigate = useNavigate();
   const [phone, setPhone] = useState("");
@@ -9,6 +10,7 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const { loginWithPhone } = useContext(AuthContext);
   const [loading , setLoading ] = useState (false ) ;
+  //  const  {user} = useContext(AuthContext) ; 
   const handleLogin = async (e) => {
     setLoading(true) 
     setMessage("");
@@ -18,7 +20,11 @@ export default function Login() {
       if (phone === "" || phone == null) {
         throw Error("Please Enter the valid  Phone number ");
       }
-      const res = await loginWithPhone(phone);
+       await loginWithPhone(phone);
+
+      //  if(user?.uid) {
+      //      console.log ("user aa gaya ")
+      //  }
       console.log("reCAPTCHA setup complete");
       setLoading(false) 
       navigate("/verify");

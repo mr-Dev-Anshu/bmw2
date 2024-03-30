@@ -7,7 +7,7 @@ import { auth } from "../firebase.config";
 import { signOut } from "firebase/auth";
 
 const Profile = () => {
-  const admin = 1;
+  const admin = "+919608837964";
   const { user } = useContext(AuthContext);
 
   const handleLogOut = async () => {
@@ -54,7 +54,7 @@ const Profile = () => {
                 >
                   Log Out
                 </p>
-                {admin ? (
+                {admin===user.phoneNumber ? (
                   <Link
                     to={"/admin"}
                     className="bg-green-500 cursor-pointer text-white font-bold rounded-xl p-4 px-24"

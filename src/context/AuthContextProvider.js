@@ -1,6 +1,4 @@
-import { createContext, useEffect, useState } from "react";
-import { realTimeDb } from "../firebase.config";
-import { onValue, ref } from "firebase/database";
+import { createContext,  useState } from "react";
 import {
   RecaptchaVerifier,
   onAuthStateChanged,
@@ -34,7 +32,6 @@ export default function AuthContextProvider({ children }) {
 
     //  console.log(confirmObj)
   };
-
   const VerifyOPT = async (otp) => {
     try {
       if (confirmObj === "" || confirmObj === null) {
@@ -46,30 +43,10 @@ export default function AuthContextProvider({ children }) {
       console.log("here is error from verify otp ");
     }
   };
-
-
   /// All transactions Data 
-  const [transactions, setTransactions] = useState();
-
-  const dbRef = ref(realTimeDb, "transactions");
-
-  useEffect(() => {
-    onValue(dbRef, (snap) => {
-      const data = snap.val();
-      const tem = [];
-      Object.keys(data).map((items) => {
-        tem.push({ ...data[items] });
-        return 0 ;
-      });
-      setTransactions(tem);
-    });
-  } , []);
-
-
-
   return (
     <AuthContext.Provider
-      value={{ loginWithPhone, confirmObj, VerifyOPT, user  ,  transactions }}
+      value={{ loginWithPhone, confirmObj, VerifyOPT, user   }}
     > 
       {children}
     </AuthContext.Provider>

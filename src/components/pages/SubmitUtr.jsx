@@ -1,42 +1,48 @@
 import React, { useContext, useState } from "react";
-import { realTimeDb } from "../../firebase.config";
-import { equalTo, get, push, query, ref } from "firebase/database";
 import { AuthContext } from "../../context/AuthContextProvider";
+import { addDoc, collection,  getDocs, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
+import { db } from "../../firebase.config";
+import { query } from "firebase/database";
 const SubmitUtr = () => {
-    const [data , setData ] = useState ({}) 
   const [utr, setUtr] = useState();
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const dbRef = ref(realTimeDb, "transactions");
+  const [loading , setLoading ] = useState(false) ; 
 
-  const submitUtr = async () => {
-    const utrExist = query(dbRef, equalTo("utr", utr));
-
+  const submitUtr = async () => { 
+    setLoading(true) ; 
+    setError(null)
     try {
-      const snapShot = await get(utrExist);
-       console.log (snapShot.exists) ; 
-      if (!snapShot) {
-        setError(null);
-          setData (pre=> {
-              pre.phoneNumber = user.phoneNumber ;
-              pre.userID =  user.uid  ;
-              pre.utr = utr ; 
-              pre.active  = true 
-          })
-        await push(dbRef, data);
-        navigate("/profile");
+      const querySnapshot = await getDocs(
+        query(collection(db, "transactions"), where("utrNumber", "==", utr))
+      );
+
+      if (querySnapshot.empty) {
+        const docRef = await addDoc(collection(db, "transactions"), {
+          active: true,
+          utrNumber: utr,   
+          phoneNumber: user?.phoneNumber,
+          userId: user?.uid,
+        });
+        
+         console.log(docRef)
+         setLoading(false) ;
+
+           navigate("/message") 
       } else {
-        setError("UTR already exists!");
+        setLoading(false) ; 
+         setError("UTR is already in use ")
       }
     } catch (error) {
+      setLoading(false) ; 
       console.log("Error while submitting Utr", error);
     }
   };
 
   return (
+    
     <div className="flex flex-col gap-10 min-h-screen justify-center items-center">
       <p className="text-4xl font-extrabold">BMW</p>
       <p className="text-xl font-bold">Submit Your UTR NO...</p>
@@ -48,10 +54,11 @@ const SubmitUtr = () => {
           placeholder="Enter the UTR No. ..."
         />
         <button
+          disabled={loading}  
           onClick={submitUtr}
           className="bg-blue-700 p-3 text-xl text-white rounded-xl"
         >
-          Submit
+        { loading ? 'Loading...': " Submit"}
         </button>
       </div>
       <p className="text-red-500 text-center text-2xl">{error}</p>
