@@ -13,6 +13,7 @@ import VerifyOtp from "./auth/VerifyOtp";
 import ConfirmBuy from "./components/pages/ConfirmBuy";
 import AdminPanel from "./components/pages/AdminPanel";
 import MessageAfterConfirm from "./components/pages/MessageAfterConfirm";
+import SubmitUtr from "./components/pages/SubmitUtr";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
         <Route path="/confirm" element={<ConfirmBuy />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/message" element={<MessageAfterConfirm />} />
-
+        <Route path="/utr" element={<SubmitUtr />} />\
       </Routes>
     </Router>
   );

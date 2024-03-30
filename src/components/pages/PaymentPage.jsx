@@ -22,7 +22,7 @@ const PaymentPage = () => {
       <div className=" flex flex-col justify-center items-center mt-4">
         <img className="h-96 outline rounded-xl" src={QR} alt="" />
         <Link
-          to={"/"}
+          to={"/utr"}
           className="p-4 bg-blue-700 font-semibold mt-6 rounded-xl hover:scale-95 text-white duration-200"
         >
           Submit UTR No.

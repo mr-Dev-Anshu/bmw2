@@ -3,12 +3,18 @@ import MenuBar from "./common/MenuBar";
 import { FaArrowAltCircleLeft, FaUser } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContextProvider";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase.config";
+import { signOut } from "firebase/auth";
 
 const Profile = () => {
   const admin = 1;
-  const { user, transactions } = useContext(AuthContext);
-  console.log(transactions);
-   console.log (user) ; 
+  const { user } = useContext(AuthContext);
+
+  const handleLogOut = async () => {
+    await signOut(auth);
+    window.location.reload();
+  };
+
   return (
     <>
       <MenuBar />
@@ -36,10 +42,16 @@ const Profile = () => {
                 </div>
               </div>
               <div className="flex gap-12">
-                <Link to={"/payment"} className="bg-blue-700 cursor-pointer text-white font-bold rounded-xl p-4 px-24">
+                <Link
+                  to={"/payment"}
+                  className="bg-blue-700 cursor-pointer text-white font-bold rounded-xl p-4 px-24"
+                >
                   Deposit Money
                 </Link>
-                <p className="bg-red-500 cursor-pointer text-white font-bold rounded-xl p-4 px-24">
+                <p
+                  onClick={handleLogOut}
+                  className="bg-red-500 cursor-pointer text-white font-bold rounded-xl p-4 px-24"
+                >
                   Log Out
                 </p>
                 {admin ? (
