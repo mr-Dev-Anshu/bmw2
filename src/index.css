@@ -28,10 +28,17 @@
     @apply h-12 flex flex-col justify-center items-center
 }
 
+.loading {
+  @apply  text-4xl  text-green-500 flex justify-center items-center h-screen 
+}
 
 .animate{
     animation: scrollUp 35s ease-in-out infinite;
 }
+
+
+
+  
 
 @keyframes scrollUp {
     0%{

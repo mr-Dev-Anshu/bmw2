@@ -33,7 +33,7 @@ function App() {
         <Route path="/confirm" element={<ConfirmBuy />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/message" element={<MessageAfterConfirm />} />
-        <Route path="/utr" element={<SubmitUtr />} />\
+        <Route path="/utr" element={<SubmitUtr />} />
       </Routes>
     </Router>
   );
