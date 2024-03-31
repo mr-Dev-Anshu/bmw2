@@ -14,6 +14,7 @@ import { db } from "../../firebase.config";
 const AdminPanel = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingBtn , setLoadingBtn ] =  useState(false) ; 
   const [amount, setAmount] = useState(0);
   const handleClick = async () => {
     try {
@@ -44,7 +45,9 @@ const AdminPanel = () => {
 
   // HandleConfirm function starting
   const handleConfirm = async (phoneNumber, utr) => {
-    // console.log(utr);
+    // console.log(utr); 
+     setLoadingBtn(true)
+   
     try {
       // Updating the active payment
       const q = query(
@@ -86,9 +89,10 @@ const AdminPanel = () => {
       await setDoc(profileDataRef, data);
 
       console.log("data added successfully");
-
+     setLoadingBtn(false ) ; 
       window.location.reload();
     } catch (error) {
+       setLoadingBtn(false) ; 
       console.log(error);
     }
   };
@@ -125,7 +129,7 @@ const AdminPanel = () => {
                   }
                   className="text-xl bg-green-500 text-white py-2 px-2  rounded  shadow-xl"
                 >
-                  Confirm Payment
+                 { loadingBtn? "Please wait " : " Confirm Payment"}
                 </button>
               </div>
             ))}

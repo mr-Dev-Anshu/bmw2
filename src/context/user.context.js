@@ -3,20 +3,20 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase.config";
 export const userContext = createContext();
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [currUser, setCurrUser] = useState();
 
   onAuthStateChanged(auth, (curruser) => {
-    if (curruser?.emailVerified) {
-      setUser(curruser);
+    if (curruser) {
+      setCurrUser(curruser); 
     }
   });
 
   return (
-    <userContext.Provider value={{ user }}>
+    <userContext.Provider value={{ currUser }}>
       {" "}
-      {user ? (
-        <div className="flex justify-center h-screen items-center ">
-          Loading
+      {!currUser ? (
+        <div className="flex justify-center h-screen items-center text-green-500 text-bold text-4xl  ">
+          Loading....
         </div>
       ) : (
         children
