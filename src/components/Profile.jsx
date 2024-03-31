@@ -12,9 +12,10 @@ import { userForProfileContext } from "../context/UserForProfile";
 const Profile = () => {
   const { currUser } = useContext(userForProfileContext);
   const [ProfileData, setProfileData] = useState();
+  const [isAdmin , setIsAdmin ] = useState(false) ; 
   // console.log (currUser)
-  const admin = "+919608837964";
-
+  const admin = ["+919608837964","+919034978218"];
+ 
   const [userProfile, setUserProfile] = useState();
 
   const handleLogOut = async () => {
@@ -22,26 +23,43 @@ const Profile = () => {
     window.location.reload();
   };
 
-  useEffect(async () => {
-    try {
+  useEffect(() => {
+    let isMounted = true; // Flag to track if component is mounted
+  
+    const fetchData = async () => {
+      try {
+        if (currUser) {
+          const q = query(
+            collection(db, "Users_Profile"),
+            where("phoneNumber", "==", currUser?.phoneNumber)
+          );
 
-      const q = query(
-        collection(db, "Users_Profile"),
-        where("phoneNumber", "==", currUser?.phoneNumber)
-      );
+          admin.forEach(item=> {if(currUser?.phoneNumber==item){
+                  setIsAdmin(true)  
+          }})
   
-      const snapProfileData = await getDocs(q);
-      snapProfileData.forEach((doc) => {
-        console.log(doc.data());
+          const snapProfileData = await getDocs(q);
   
-        setProfileData(doc.data());
-      });
-      
-    } catch (error) {
-       console.log(error) ; 
-    }
-    
-  }, []);
+          if (isMounted) {
+            snapProfileData.forEach((doc) => {
+              setProfileData(doc.data());
+              
+            });
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    fetchData(); 
+  
+   
+    return () => {
+      isMounted = false; 
+    };
+  }, [currUser]); 
+  
 
   return (
     <>
@@ -84,7 +102,7 @@ const Profile = () => {
                 >
                   Log Out
                 </p>
-                {admin === currUser.phoneNumber ? (
+                { isAdmin ? (
                   <Link
                     to={"/admin"}
                     className="bg-green-500 cursor-pointer text-white font-bold rounded-xl p-4 px-24"

@@ -13,7 +13,7 @@ export const UserForProfileContextProvider = ({ children }) => {
 
   return (
     <userForProfileContext.Provider value={{ currUser }}>
-       {!currUser?<div className="loading">Loading...</div>:children}
+       {children}
     </userForProfileContext.Provider>
   );
 };
