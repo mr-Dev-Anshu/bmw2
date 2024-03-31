@@ -101,8 +101,9 @@ const AdminPanel = () => {
     <div>
       {!loading ? (
         <div>
-          <div className="flex justify-center text-4xl font-medium text-green-600 mt-10  ">
-            Welcome to the Admin Page
+          <div className="flex justify-center text-4xl font-medium text-green-600 mt-10 gap-4 ">
+            <p>Welcome to the Admin Page</p> 
+            <button className="text-1xl text-xl bg-red-700 text-white py-2 px-2  rounded  shadow-xl">Confirm Deposites</button>
           </div>
 
           <div className="px-16 mt-10  ">
