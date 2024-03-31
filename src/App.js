@@ -14,6 +14,8 @@ import ConfirmBuy from "./components/pages/ConfirmBuy";
 import AdminPanel from "./components/pages/AdminPanel";
 import MessageAfterConfirm from "./components/pages/MessageAfterConfirm";
 import SubmitUtr from "./components/pages/SubmitUtr";
+import Withdraw from "./components/pages/Withdraw";
+import WithdrawlMessage from "./components/pages/WithdrawlMessage";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/message" element={<MessageAfterConfirm />} />
         <Route path="/utr" element={<SubmitUtr />} />
+        <Route path="/withdraw" element={<Withdraw />} />
+        <Route path="/withdrawlmessage" element={<WithdrawlMessage />} />
       </Routes>
     </Router>
   );

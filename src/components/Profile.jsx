@@ -12,10 +12,10 @@ import { userForProfileContext } from "../context/UserForProfile";
 const Profile = () => {
   const { currUser } = useContext(userForProfileContext);
   const [ProfileData, setProfileData] = useState();
-  const [isAdmin , setIsAdmin ] = useState(false) ; 
+  const [isAdmin, setIsAdmin] = useState(false);
   // console.log (currUser)
-  const admin = ["+919608837964","+919034978218"];
- 
+  const admin = ["+919608837964", "+919034978218"];
+
   const [userProfile, setUserProfile] = useState();
 
   const handleLogOut = async () => {
@@ -25,7 +25,7 @@ const Profile = () => {
 
   useEffect(() => {
     let isMounted = true; // Flag to track if component is mounted
-  
+
     const fetchData = async () => {
       try {
         if (currUser) {
@@ -34,16 +34,17 @@ const Profile = () => {
             where("phoneNumber", "==", currUser?.phoneNumber)
           );
 
-          admin.forEach(item=> {if(currUser?.phoneNumber==item){
-                  setIsAdmin(true)  
-          }})
-  
+          admin.forEach((item) => {
+            if (currUser?.phoneNumber == item) {
+              setIsAdmin(true);
+            }
+          });
+
           const snapProfileData = await getDocs(q);
-  
+
           if (isMounted) {
             snapProfileData.forEach((doc) => {
               setProfileData(doc.data());
-              
             });
           }
         }
@@ -51,15 +52,13 @@ const Profile = () => {
         console.log(error);
       }
     };
-  
-    fetchData(); 
-  
-   
+
+    fetchData();
+
     return () => {
-      isMounted = false; 
+      isMounted = false;
     };
-  }, [currUser]); 
-  
+  }, [currUser]);
 
   return (
     <>
@@ -91,6 +90,12 @@ const Profile = () => {
               </div>
               <div className="flex gap-12">
                 <Link
+                  to={"/withdraw"}
+                  className="bg-green-500 cursor-pointer text-white font-bold rounded-xl p-4 px-24"
+                >
+                  Withdraw Money
+                </Link>
+                <Link
                   to={"/payment"}
                   className="bg-blue-700 cursor-pointer text-white font-bold rounded-xl p-4 px-24"
                 >
@@ -102,12 +107,12 @@ const Profile = () => {
                 >
                   Log Out
                 </p>
-                { isAdmin ? (
+                {isAdmin ? (
                   <Link
                     to={"/admin"}
                     className="bg-green-500 cursor-pointer text-white font-bold rounded-xl p-4 px-24"
                   >
-                    Admin Panel 
+                    Admin Panel
                   </Link>
                 ) : null}
               </div>
