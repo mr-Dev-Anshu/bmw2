@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase.config";
-export const userContext = createContext();
-export const UserContextProvider = ({ children }) => {
+export const userForProfileContext = createContext();
+export const UserForProfileContextProvider = ({ children }) => {
   const [currUser, setCurrUser] = useState();
 
   onAuthStateChanged(auth, (curruser) => {
@@ -12,8 +12,8 @@ export const UserContextProvider = ({ children }) => {
   });
 
   return (
-    <userContext.Provider value={{ currUser }}>
-       {children}
-    </userContext.Provider>
+    <userForProfileContext.Provider value={{ currUser }}>
+       {!currUser?<div className="loading">Loading...</div>:children}
+    </userForProfileContext.Provider>
   );
 };

@@ -7,9 +7,10 @@ import { auth, db } from "../firebase.config";
 import { signOut } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { userContext } from "../context/user.context";
+import { userForProfileContext } from "../context/UserForProfile";
 
 const Profile = () => {
-  const { currUser } = useContext(userContext);
+  const { currUser } = useContext(userForProfileContext);
   const [ProfileData, setProfileData] = useState();
   // console.log (currUser)
   const admin = "+919608837964";
@@ -22,17 +23,24 @@ const Profile = () => {
   };
 
   useEffect(async () => {
-    const q = query(
-      collection(db, "Users_Profile"),
-      where("phoneNumber", "==", currUser?.phoneNumber)
-    );
+    try {
 
-    const snapProfileData = await getDocs(q);
-    snapProfileData.forEach((doc) => {
-      console.log(doc.data());
-
-      setProfileData(doc.data());
-    });
+      const q = query(
+        collection(db, "Users_Profile"),
+        where("phoneNumber", "==", currUser?.phoneNumber)
+      );
+  
+      const snapProfileData = await getDocs(q);
+      snapProfileData.forEach((doc) => {
+        console.log(doc.data());
+  
+        setProfileData(doc.data());
+      });
+      
+    } catch (error) {
+       console.log(error) ; 
+    }
+    
   }, []);
 
   return (
