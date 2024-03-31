@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Withdraw = () => {
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center">
+      <p>helo</p>
       <Link to={"/"} className=" w-full p-2">
         <p>
           <FaArrowAltCircleLeft size={36} color="blue" />
