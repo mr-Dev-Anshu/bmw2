@@ -1,25 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MenuBar from "./common/MenuBar";
 import { FaArrowAltCircleLeft, FaUser } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContextProvider";
 import { Link } from "react-router-dom";
-import { auth } from "../firebase.config";
+import { auth, db } from "../firebase.config";
 import { signOut } from "firebase/auth";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { userContext } from "../context/user.context";
 
 const Profile = () => {
+  const { currUser } = useContext(userContext);
+  const [ProfileData, setProfileData] = useState();
+  // console.log (currUser)
   const admin = "+919608837964";
-  const { user } = useContext(AuthContext);
+
+  const [userProfile, setUserProfile] = useState();
 
   const handleLogOut = async () => {
     await signOut(auth);
     window.location.reload();
   };
 
+  useEffect(async () => {
+    const q = query(
+      collection(db, "Users_Profile"),
+      where("phoneNumber", "==", currUser?.phoneNumber)
+    );
+
+    const snapProfileData = await getDocs(q);
+    snapProfileData.forEach((doc) => {
+      console.log(doc.data());
+
+      setProfileData(doc.data());
+    });
+  }, []);
+
   return (
     <>
       <MenuBar />
       <>
-        {user ? (
+        {currUser ? (
           <div className="p-3">
             <Link to={"/"}>
               <p className="px-6">
@@ -32,13 +52,15 @@ const Profile = () => {
                   <FaUser size={64} />
                   <div>
                     <p className="text-2xl font-bold">
-                      User: {user.phoneNumber}
+                      User: {currUser.phoneNumber}
                     </p>
                   </div>
                 </div>
                 <div className="h-full outline w-48 py-4 flex justify-center items-center flex-col rounded-xl">
                   <p className="text-xl font-semibold">Balance</p>
-                  <p className="text-4xl font-bold mt-6">Rs : 0</p>
+                  <p className="text-4xl font-bold mt-6">
+                    Rs : {ProfileData?.amount}{" "}
+                  </p>
                 </div>
               </div>
               <div className="flex gap-12">
@@ -54,7 +76,7 @@ const Profile = () => {
                 >
                   Log Out
                 </p>
-                {admin===user.phoneNumber ? (
+                {admin === currUser.phoneNumber ? (
                   <Link
                     to={"/admin"}
                     className="bg-green-500 cursor-pointer text-white font-bold rounded-xl p-4 px-24"
