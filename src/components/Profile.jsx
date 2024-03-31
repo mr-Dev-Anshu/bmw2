@@ -107,7 +107,7 @@ const Profile = () => {
                     to={"/admin"}
                     className="bg-green-500 cursor-pointer text-white font-bold rounded-xl p-4 px-24"
                   >
-                    Admin Panel
+                    Admin Panel 
                   </Link>
                 ) : null}
               </div>
