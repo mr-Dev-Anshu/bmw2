@@ -83,7 +83,7 @@ export default function WithdrawAdmin() {
 
       console.log("Data added successfully ");
       setLoading(false);
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -113,7 +113,7 @@ export default function WithdrawAdmin() {
                 onClick={() => handleConfirm(item.phoneNumber, item.money)}
                 className="text-xl bg-green-500 text-white py-2 px-2  rounded  shadow-xl"
               >
-                {!loading ? "Please wait " : " Confirm Payment"}
+                {loading ? "Please wait " : " Confirm Payment"}
               </button>
             </div>
           ))}
