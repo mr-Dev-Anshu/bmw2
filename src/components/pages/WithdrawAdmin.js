@@ -15,7 +15,7 @@ export default function WithdrawAdmin() {
   const [loading, setLoading] = useState(false);
   const getData = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const q = query(
         collection(db, "withdraw"),
         where("isActive", "==", true)
