@@ -10,11 +10,12 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../../firebase.config";
+import { Link } from "react-router-dom";
 
 const AdminPanel = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [loadingBtn , setLoadingBtn ] =  useState(false) ; 
+  const [loadingBtn, setLoadingBtn] = useState(false);
   const [amount, setAmount] = useState(0);
   const handleClick = async () => {
     try {
@@ -45,9 +46,9 @@ const AdminPanel = () => {
 
   // HandleConfirm function starting
   const handleConfirm = async (phoneNumber, utr) => {
-    // console.log(utr); 
-     setLoadingBtn(true)
-   
+    // console.log(utr);
+    setLoadingBtn(true);
+
     try {
       // Updating the active payment
       const q = query(
@@ -89,10 +90,10 @@ const AdminPanel = () => {
       await setDoc(profileDataRef, data);
 
       console.log("data added successfully");
-     setLoadingBtn(false ) ; 
+      setLoadingBtn(false);
       window.location.reload();
     } catch (error) {
-       setLoadingBtn(false) ; 
+      setLoadingBtn(false);
       console.log(error);
     }
   };
@@ -102,7 +103,8 @@ const AdminPanel = () => {
       {!loading ? (
         <div>
           <div className="flex justify-center text-4xl font-medium text-green-600 mt-10  ">
-            Welcome to the Admin Page
+            <p> Welcome to the Admin Page <Link to={"/withdrawAdmin"}><span className="text-xl bg-green-500 text-white py-2 px-2  rounded  shadow-xl">Confirm withdraw</span></Link></p>
+            
           </div>
 
           <div className="px-16 mt-10  ">
@@ -129,7 +131,7 @@ const AdminPanel = () => {
                   }
                   className="text-xl bg-green-500 text-white py-2 px-2  rounded  shadow-xl"
                 >
-                 { loadingBtn? "Please wait " : " Confirm Payment"}
+                  {loadingBtn ? "Please wait " : " Confirm Payment"}
                 </button>
               </div>
             ))}

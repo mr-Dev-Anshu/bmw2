@@ -14,7 +14,7 @@ const Profile = () => {
   const [ProfileData, setProfileData] = useState();
   const [isAdmin, setIsAdmin] = useState(false);
   // console.log (currUser)
-  const admin = ["+919608837964", "+919034978218"];
+  const admin = ["+919608837964", "+919034978218" , "+918090900602"];
 
   const [userProfile, setUserProfile] = useState();
 

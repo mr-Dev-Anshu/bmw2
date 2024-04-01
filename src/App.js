@@ -16,6 +16,7 @@ import MessageAfterConfirm from "./components/pages/MessageAfterConfirm";
 import SubmitUtr from "./components/pages/SubmitUtr";
 import Withdraw from "./components/pages/Withdraw";
 import WithdrawlMessage from "./components/pages/WithdrawlMessage";
+import WithdrawAdmin from "./components/pages/WithdrawAdmin";
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
         <Route path="/utr" element={<SubmitUtr />} />
         <Route path="/withdraw" element={<Withdraw />} />
         <Route path="/withdrawlmessage" element={<WithdrawlMessage />} />
+        <Route path="/withdrawAdmin" element={<WithdrawAdmin />} />
+
       </Routes>
     </Router>
   );
