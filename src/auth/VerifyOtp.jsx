@@ -11,7 +11,7 @@ export default function VerifyOtp() {
 
   useEffect(() => {
     if (user) {
-      navigate("/profile");
+      navigate("/");
     }
   });
 
@@ -44,6 +44,7 @@ export default function VerifyOtp() {
             onClick={handleVerification}
           >
             {loading ? "Loading..." : "Verify"}
+            
           </button>
         </div>
       </div>
