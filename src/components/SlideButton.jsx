@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import Card from "./fragments/Card";
+import iphone from "../assets/iphone.png"
+import ipad from "../assets/ipad.png"
+import watch from "../assets/appleWatch.png"
+import macbook from "../assets/macbook.png"
+import mac from "../assets/macdesk.png"
 import bmw from "../assets/bmw.png";
 import bmw2 from "../assets/bmw2.png";
 import bmw3 from "../assets/bmw3.png";
@@ -11,46 +16,46 @@ const SlideButton = () => {
 
   const cardData = [
     {
-      title:"BMW Cars",
+      title:"Apple Watch",
       price:"800",
       dincome:"10%",
       cycle:"42 days",
-      src:{bmw}
+      src:watch
     },
     {
-      title:"BMW Cars",
+      title:"I-pad",
       price:"1600",
       dincome:"10%",
       cycle:"42 days",
-      src:{bmw}
+      src:ipad
     },
     {
-      title:"BMW Cars",
+      title:"Iphone",
       price:"3200",
       dincome:"10%",
       cycle:"42 days",
-      src:{bmw}
+      src:iphone
     },
     {
-      title:"BMW Cars",
+      title:"Macbook",
       price:"6400",
       dincome:"10%",
       cycle:"42 days",
-      src:{bmw}
+      src:macbook
     },
     {
       title:"BMW Cars",
       price:"12800",
       dincome:"10%",
       cycle:"42 days",
-      src:{bmw}
+      src:mac
     },
     {
       title:"BMW Cars",
       price:"25600",
       dincome:"10%",
       cycle:"42 days",
-      src:{bmw}
+      src:bmw4
     },
   ]
   const [showProduction, setShowProduction] = useState(true);
@@ -116,7 +121,7 @@ const SlideButton = () => {
             price={item.price}
             dincome= {item.dincome}
             cycle={item.cycle}
-            src={bmw}
+            src={item.src}
           />
           ))
          }
@@ -126,54 +131,17 @@ const SlideButton = () => {
             showHarvest ? "flex" : "hidden"
           }`}
         >
-          <Card
-            title="BMW No.1 "
-            price="277"
-            dincome="427"
-            tincome="427"
-            cycle="1 day"
-            src={bmw2}
+        {
+          cardData.map((item)=> (
+            <Card
+            title={item.title} 
+            price={item.price}
+            dincome= {item.dincome}
+            cycle={item.cycle}
+            src={item.src}
           />
-          <Card
-            title="BMW No.2 "
-            price="1287"
-            dincome="815"
-            tincome="2445"
-            cycle="3 days"
-            src={bmw2}
-          />
-          <Card
-            title="BMW No.3"
-            price="4500"
-            dincome="2959"
-            tincome="8877"
-            cycle="3 days"
-            src={bmw2}
-          />
-          <Card
-            title="BMW No.4"
-            price="15800"
-            dincome="10000"
-            tincome="30000"
-            cycle="3 days"
-            src={bmw2}
-          />
-          <Card
-            title="BMW No.5"
-            price="32200"
-            dincome="20000"
-            tincome="60000"
-            cycle="3 days"
-            src={bmw2}
-          />
-          <Card
-            title="BMW No.6"
-            price="52000"
-            dincome="45266"
-            tincome="135800"
-            cycle="3 days"
-            src={bmw2}
-          />
+          ))
+         }
         </div>
         <div
           className={`w-[100vw] flex-col gap-4 ${showGift ? "flex" : "hidden"}`}

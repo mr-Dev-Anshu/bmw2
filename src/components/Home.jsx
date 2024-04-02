@@ -10,9 +10,9 @@ const Home = () => {
     <div className=" relative h-[100vh] bg-blue-600">
       <MenuBar />
       <Link to={"/"}>
-      <p className="px-6 py-3 text-3xl tracking-widest text-white font-bold cursor-pointer ">
-        BMW
-      </p>
+        <p className="px-6 py-3 text-3xl tracking-widest text-white font-bold cursor-pointer ">
+          Online Mall
+        </p>
       </Link>
       <div className="w-full p-2">
         <SliderComponent />

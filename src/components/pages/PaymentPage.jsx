@@ -1,5 +1,5 @@
 import React from "react";
-import QR from "../../assets/QR.jpeg";
+import QR from "../../assets/Qr2.jpeg";
 import { Link } from "react-router-dom";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 

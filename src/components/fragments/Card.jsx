@@ -8,7 +8,7 @@ const Card = ({ price, dincome, title, tincome, cycle, src }) => {
     <div className="flex justify-between bg-gray-200 rounded-xl">
       <div className="flex gap-6">
         <div className=" grid place-items-center py-2 p-4">
-          <img src={src} className="h-24 w-40 object-cover" alt="" />
+          <img src={src} className="h-24 w-40 object-contain" alt="" />
           <p className="font-bold text-2xl ">₹{price}</p>
         </div>
         <div className="grid place-items-start py-4 font-semibold">
