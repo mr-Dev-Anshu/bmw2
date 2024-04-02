@@ -7,6 +7,52 @@ import bmw4 from "../assets/bmw4.png";
 import sold from "../assets/sold.png";
 
 const SlideButton = () => {
+
+
+  const cardData = [
+    {
+      title:"BMW Cars",
+      price:"800",
+      dincome:"10%",
+      cycle:"42 days",
+      src:{bmw}
+    },
+    {
+      title:"BMW Cars",
+      price:"1600",
+      dincome:"10%",
+      cycle:"42 days",
+      src:{bmw}
+    },
+    {
+      title:"BMW Cars",
+      price:"3200",
+      dincome:"10%",
+      cycle:"42 days",
+      src:{bmw}
+    },
+    {
+      title:"BMW Cars",
+      price:"6400",
+      dincome:"10%",
+      cycle:"42 days",
+      src:{bmw}
+    },
+    {
+      title:"BMW Cars",
+      price:"12800",
+      dincome:"10%",
+      cycle:"42 days",
+      src:{bmw}
+    },
+    {
+      title:"BMW Cars",
+      price:"25600",
+      dincome:"10%",
+      cycle:"42 days",
+      src:{bmw}
+    },
+  ]
   const [showProduction, setShowProduction] = useState(true);
   const [showHarvest, setShowHarvest] = useState(false);
   const [showGift, setShowGift] = useState(false);
@@ -63,54 +109,17 @@ const SlideButton = () => {
             showProduction ? "flex" : "hidden"
           }`}
         >
-          <Card
-            title="BMW Cars"
-            price="800"
-            dincome="203"
-            tincome="8550"
-            cycle="42 days"
+         {
+          cardData.map((item)=> (
+            <Card
+            title={item.title} 
+            price={item.price}
+            dincome= {item.dincome}
+            cycle={item.cycle}
             src={bmw}
           />
-          <Card
-            title="BMW Cars"
-            price="1500"
-            dincome="906"
-            tincome="37170"
-            cycle="41 days"
-            src={bmw}
-          />
-          <Card
-            title="BMW Cars"
-            price="2500"
-            dincome="2788"
-            tincome="111550"
-            cycle="40 days"
-            src={bmw}
-          />
-          <Card
-            title="BMW Cars"
-            price="5500"
-            dincome="10384"
-            tincome="405000"
-            cycle="39 days"
-            src={bmw}
-          />
-          <Card
-            title="BMW Cars"
-            price="9000"
-            dincome="22105"
-            tincome="840000"
-            cycle="38 days"
-            src={bmw}
-          />
-          <Card
-            title="BMW Cars"
-            price="21000"
-            dincome="50270"
-            tincome="1860000"
-            cycle="37 days"
-            src={bmw}
-          />
+          ))
+         }
         </div>
         <div
           className={`w-[100vw] flex-col gap-4 ${
