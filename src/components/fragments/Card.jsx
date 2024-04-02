@@ -1,7 +1,9 @@
 import React from "react";
-import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 
 const Card = ({ price, dincome, title, tincome, cycle, src }) => {
+
+  
   return (
     <div className="flex justify-between bg-gray-200 rounded-xl">
       <div className="flex gap-6">
@@ -12,17 +14,17 @@ const Card = ({ price, dincome, title, tincome, cycle, src }) => {
         <div className="grid place-items-start py-4 font-semibold">
           <p className="font-extrabold tracking-wider">{title}</p>
           <p>Daily Income: ₹{dincome}</p>
-          <p>Total Income: ₹{tincome}</p>
+         
           <p>Cycle: {cycle}</p>
         </div>
       </div>
       <div className="grid place-items-center  h-full pr-12 ">
-        <HashLink
-          to={"/confirm"}
-          className="p-4 bg-blue-700 rounded-xl text-white font-semibold"
-        >
-          Buy Now
-        </HashLink>
+        <Link to={`/confirm/${price}`}>
+        <button  className="p-4 bg-blue-700 rounded-xl text-white font-semibold">
+          Buy
+          Now
+        </button>
+        </Link>
       </div>
     </div>
   );

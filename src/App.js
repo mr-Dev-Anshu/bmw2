@@ -17,6 +17,7 @@ import SubmitUtr from "./components/pages/SubmitUtr";
 import Withdraw from "./components/pages/Withdraw";
 import WithdrawlMessage from "./components/pages/WithdrawlMessage";
 import WithdrawAdmin from "./components/pages/WithdrawAdmin";
+import SuccessfullBuy from "./components/pages/SuccessfullBuy";
 
 function App() {
   return (
@@ -33,13 +34,15 @@ function App() {
         <Route path="/reward" element={<Reward />} />
         <Route path="/login" element={<Login />} />
         <Route path="/verify" element={<VerifyOtp />} />
-        <Route path="/confirm" element={<ConfirmBuy />} />
+        <Route path="/confirm/:price" element={<ConfirmBuy />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/message" element={<MessageAfterConfirm />} />
         <Route path="/utr" element={<SubmitUtr />} />
         <Route path="/withdraw" element={<Withdraw />} />
         <Route path="/withdrawlmessage" element={<WithdrawlMessage />} />
         <Route path="/withdrawAdmin" element={<WithdrawAdmin />} />
+        <Route path="/successbuy" element={<SuccessfullBuy />} />
+        
 
       </Routes>
     </Router>

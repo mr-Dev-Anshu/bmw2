@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import { db } from "../../firebase.config";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 export default function WithdrawAdmin() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -91,6 +92,15 @@ export default function WithdrawAdmin() {
   };
   return (
     <>
+      <div className="flex justify-center text-2xl font-medium mt-12 text-green-600 items-center ">
+        Withdraw payment request{" "}
+        <Link to={"/"}>
+        <span className="text-xl ml-5 bg-green-500 text-white py-2 px-2  rounded  shadow-xl">
+           Home  {" "}
+        </span>{" "}
+        </Link>
+       
+      </div>
       {data ? (
         <div className="px-16 mt-10  ">
           {data.map((item) => (
