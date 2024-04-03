@@ -1,14 +1,15 @@
 import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth" ; 
 import { getFirestore } from "firebase/firestore";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCx4JJXlV-Sv9yE-oWN1e-BmzcUTmMGohQ",
-  authDomain: "mock-interview-f6ffc.firebaseapp.com",
-  projectId: "mock-interview-f6ffc",
-  storageBucket: "mock-interview-f6ffc.appspot.com",
-  messagingSenderId: "956521351511",
-  appId: "1:956521351511:web:d5b20feb7b28db0f9c9612",
-  measurementId: "G-91B0BTGQG4"
+  apiKey: "AIzaSyCmFQEalCVnpv6YZYu6q2TMc_P_Pnhz1Qw",
+  authDomain: "online-mall-73ec2.firebaseapp.com",
+  projectId: "online-mall-73ec2",
+  storageBucket: "online-mall-73ec2.appspot.com",
+  messagingSenderId: "947942315662",
+  appId: "1:947942315662:web:bf735a471ca2761dc99bdf",
+  measurementId: "G-BK7SFRT097"
 };
 
 
@@ -16,3 +17,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth (app) ; 
 export const db =  getFirestore(app) ; 
+
